@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/"  xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <base th:href="${#request.getContextPath()+'/'}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="hello">hello</a>
+
+
+
+<shiro:authenticated>
+    欢迎<shiro:principal/>登录<a href="logout">注销</a>
+</shiro:authenticated>
+<a href="add">add</a>
+<shiro:notAuthenticated>
+    <a href="toLogin">登录</a>
+</shiro:notAuthenticated>
+</body>
+</html>

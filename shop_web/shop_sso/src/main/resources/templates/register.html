@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册</title>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="css/shopping-mall-index.css" />
+
+
+    <link href="css/H-ui.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+    <link href="lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+    <link href="lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/zhonglin.js"></script>
+    <script type="text/javascript" src="lib/Validform/5.3.2/Validform.min.js"></script>
+    <script type="text/javascript" src="lib/layer/1.9.3/layer.js"></script>
+    <script type="text/javascript" src="js/form_utils.js"></script>
+</head>
+
+<body>
+
+	<!--top 开始-->
+    <div class="top">
+    	<div class="top-con w1200">
+        	<p class="t-con-l f-l">您好，欢迎来到宅客微购</p>
+            <ul class="t-con-r f-r">
+            	<li><a href="#">我 (个人中心)</a></li>
+            	<li><a href="#">我的购物车</a></li>
+            	<li><a href="#">我的订单</a></li>
+            	<li class="erweima">
+                	<a href="#">扫描二维码</a>
+                    <div class="ewm-tu">
+                    	<a href="#"><img src="images/erweima-tu.jpg" /></a>
+                    </div>
+                </li>
+                <div style="clear:both;"></div>
+            </ul>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    
+    <!--logo search 开始-->
+    <div class="hd-info1 w1200">
+    	<div class="logo f-l">
+        	<h1><a href="#" title="中林网站"><img src="images/logo.jpg" /></a></h1>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+    
+    <!--内容开始-->
+    <div class="pd-20">
+        <form action="" method="post" class="form form-horizontal" id="form-user-add">
+            <div class="row cl">
+                <label class="form-label col-3"><span class="c-red">*</span>用户名：</label>
+                <div class="formControls col-3">
+                    <input type="text" class="input-text" value="user" placeholder="" id="username" name="username" datatype="*2-16" nullmsg="用户名不能为空">
+                </div>
+                <div class="col-4"> </div>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-3"><span class="c-red">*</span>密码：</label>
+                <div class="formControls col-3">
+                    <input type="password" placeholder="密码" name="password" autocomplete="off" value="user" class="input-text" datatype="*2-20" nullmsg="密码不能为空">
+                </div>
+                <div class="col-4"> </div>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-3"><span class="c-red">*</span>确认密码：</label>
+                <div class="formControls col-3">
+                    <input type="password" placeholder="确认密码" name="password2" recheck="password"  autocomplete="off" value="user" class="input-text" datatype="*" nullmsg="密码不能为空">
+                </div>
+                <div class="col-4"> </div>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-3"><span class="c-red">*</span>年龄：</label>
+                <div class="formControls col-3">
+                    <input type="text" placeholder="年龄" name="age" autocomplete="off" value="22" class="input-text" datatype="n1-3" nullmsg="不能为空">
+                </div>
+                <div class="col-4"> </div>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-3"><span class="c-red">*</span>性别：</label>
+                <div class="formControls col-3 skin-minimal">
+                    <div class="radio-box">
+                        <input type="radio" id="sex-1" checked="checked" value="1" name="sex" datatype="*" nullmsg="请选择性别！">
+                        <label for="sex-1">男</label>
+                    </div>
+                    <div class="radio-box">
+                        <input type="radio" id="sex-2" value="0" name="sex">
+                        <label for="sex-2">女</label>
+                    </div>
+                </div>
+                <div class="col-4"> </div>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-3"><span class="c-red">*</span>邮箱：</label>
+                <div class="formControls col-3">
+                    <input type="text" class="input-text"  value="854569279@qq.com" placeholder="@" name="email" id="email" datatype="e" nullmsg="请输入邮箱！">
+                  <input class="btn btn-primary radius" id="sendEmailBut" onclick="sendEmail()" type="button" value="&nbsp;&nbsp;获取验证码&nbsp;&nbsp;">
+                </div>
+                <div class="col-4"> </div>
+            </div>
+
+            <div class="row cl">
+                <label class="form-label col-3"><span class="c-red">*</span>验证码：</label>
+                <div class="formControls col-3">
+                    <input type="text" class="input-text"  name="code" value="" >
+                </div>
+                <div class="col-4"> </div>
+            </div>
+
+            <div class="row cl">
+                <div class="col-9 col-offset-3">
+                    <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <!--底部服务-->
+    <div class="ft-service">
+    	<div class="w1200">
+        	<div class="sv-con-l2 f-l">
+            	<dl>
+                	<dt><a href="#">新手上路</a></dt>
+                    <dd>
+                    	<a href="#">购物流程</a>
+                    	<a href="#">在线支付</a>
+                    </dd>
+                </dl>
+                <dl>
+                	<dt><a href="#">配送方式</a></dt>
+                    <dd>
+                    	<a href="#">货到付款区域</a>
+                    	<a href="#">配送费标准</a>
+                    </dd>
+                </dl>
+                <dl>
+                	<dt><a href="#">购物指南</a></dt>
+                    <dd>
+                    	<a href="#">常见问题</a>
+                    	<a href="#">订购流程</a>
+                    </dd>
+                </dl>
+                <dl>
+                	<dt><a href="#">售后服务</a></dt>
+                    <dd>
+                    	<a href="#">售后服务保障</a>
+                    	<a href="#">退款说明</a>
+                    	<a href="#">新手选购商品总则</a>
+                    </dd>
+                </dl>
+                <dl>
+                	<dt><a href="#">关于我们</a></dt>
+                    <dd>
+                    	<a href="#">投诉与建议</a>
+                    </dd>
+                </dl>
+                <div style="clear:both;"></div>
+            </div>
+        	<div class="sv-con-r2 f-r">
+            	<p class="sv-r-tle">187-8660-5539</p>
+            	<p>周一至周五9:00-17:30</p>
+            	<p>（仅收市话费）</p>
+            	<a href="#" class="zxkf">24小时在线客服</a>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    </div>
+    
+    <!--底部 版权-->
+    <div class="footer w1200">
+    	<p>
+        	<a href="#">关于我们</a><span>|</span>
+        	<a href="#">友情链接</a><span>|</span>
+        	<a href="#">宅客微购社区</a><span>|</span>
+        	<a href="#">诚征英才</a><span>|</span>
+        	<a href="#">商家登录</a><span>|</span>
+        	<a href="#">供应商登录</a><span>|</span>
+        	<a href="#">热门搜索</a><span>|</span>
+        	<a href="#">宅客微购新品</a><span>|</span>
+        	<a href="#">开放平台</a>
+        </p>
+        <p>
+        	沪ICP备13044278号<span>|</span>合字B1.B2-20130004<span>|</span>营业执照<span>|</span>互联网药品信息服务资格证<span>|</span>互联网药品交易服务资格证
+        </p>
+    </div>
+
+    <script type="text/javascript">
+        $(function(){
+            $("#form-user-add").Validform({
+                tiptype:2,
+                callback:function(form){
+                    submitFrom("sso/register",form);
+                    return false;
+                }
+            });
+        });
+
+        function sendEmail(){
+
+            var eamil = $("#email").val();
+
+            if(email){
+                console.info("发送邮件")
+
+                $.post("sso/sendEmail",{email:eamil});
+
+                // 先禁用按钮
+                $("#sendEmailBut").prop("disabled","disabled")
+
+                djs();
+
+            }else{
+                alert("请输入邮箱");
+            }
+        }
+
+        var time = 30;
+        function djs(){
+
+            if(time == 0){
+
+                $("#sendEmailBut").removeAttr("disabled")
+                $("#sendEmailBut").val("重新发送")
+                time = 30;
+                return ;
+            }
+
+            $("#sendEmailBut").val("邮件已发送("+time+")s")
+            --time;
+            setTimeout(function(){
+                djs();
+            },1000);
+        }
+
+    </script>
+</body>
+</html>

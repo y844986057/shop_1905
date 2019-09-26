@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean class="redis.clients.jedis.JedisPoolConfig" id="jedisPoolConfig">
+    <property name="maxIdle" value="50"/>
+    <property name="maxTotal" value="100"/>
+    <property name="maxWaitMillis" value="20000"/>
+</bean>
+<bean class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" id="jedisConnectionFactory">
+    <property name="poolConfig" ref="jedisPoolConfig"/>
+    <property name="hostName" value="120.24.173.48"/>
+    <property name="port" value="6379"/>
+    <property name="password" value="root"/>
+</bean>
+<bean class="org.springframework.data.redis.core.RedisTemplate" id="redisTemplate">
+    <property name="connectionFactory" ref="jedisConnectionFactory"/>
+    <property name="keySerializer" ref="stringRedisSerializer" ></property>
+    <property name="valueSerializer" ref="stringRedisSerializer" ></property>
+</bean>
+
+<bean class="org.springframework.data.redis.serializer.StringRedisSerializer" id="stringRedisSerializer">
+</bean>
+</beans>

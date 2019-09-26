@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <base th:href="${#request.getContextPath()+'/'}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+login
+<form method="post" action="login">
+    username:<input type="text" name="username"><br>
+    password:<input type="text" name="password"><br>
+    <input type="submit" value="登录">
+</form>
+</body>
+</html>

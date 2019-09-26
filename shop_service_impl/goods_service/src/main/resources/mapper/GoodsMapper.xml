@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.dao.IGoodsDao" >
+
+    <resultMap id="goodsMap" type="com.qf.entity.Goods">
+        <id property="id" column="id"/>
+        <result property="gname" column="gname"/>
+        <result property="gdesc" column="gdesc"/>
+        <result property="gtype" column="gtype"/>
+        <result property="gstock" column="gstock"/>
+        <result property="gpic" column="gpic"/>
+    </resultMap>
+
+
+  <select id="getSearchList"  resultMap="goodsMap">
+      select * from t_goods where gname like concat("%",#{keyWorld},"%")
+  </select>
+
+</mapper>

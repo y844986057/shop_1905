@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.dao.IOrderDetailDao" >
+
+    <insert id="batchAddOrderDetail">
+
+        INSERT INTO t_order_detail${tableNum} (
+            oid,
+            gid,
+            gname,
+            gpic,
+            gprice,
+            num,
+            sub_total,
+            gdesc
+        )
+        VALUES
+        <foreach collection="list" separator="," item="od" >
+            (
+                 #{od.oid,jdbcType=VARCHAR},
+                 #{od.gid,jdbcType=INTEGER},
+                 #{od.gname,jdbcType=VARCHAR},
+                 #{od.gpic,jdbcType=VARCHAR},
+                 #{od.gprice,jdbcType=DOUBLE},
+                 #{od.num,jdbcType=INTEGER},
+                 #{od.subTotal,jdbcType=DOUBLE},
+                 #{od.gdesc,jdbcType=VARCHAR}
+            )
+        </foreach>
+
+    </insert>
+
+</mapper>

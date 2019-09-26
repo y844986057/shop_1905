@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.dao.IOrderDao" >
+
+    <insert id="addOrder">
+            insert into t_order${tableNum} (
+              id,
+              uid,
+              state,
+              create_time,
+              total_price,
+              username,
+              phone,
+              address)
+            values (
+              #{order.id,jdbcType=VARCHAR},
+              #{order.uid,jdbcType=INTEGER},
+              #{order.state,jdbcType=INTEGER},
+              #{order.createTime,jdbcType=TIMESTAMP},
+              #{order.totalPrice,jdbcType=DOUBLE},
+              #{order.username,jdbcType=VARCHAR},
+              #{order.phone,jdbcType=VARCHAR},
+              #{order.address,jdbcType=VARCHAR})
+    </insert>
+
+    <resultMap id="orderResultMap1" type="order">
+
+        <id column="o_id" property="id" jdbcType="VARCHAR" />
+        <result column="uid" property="uid" jdbcType="INTEGER" />
+        <result column="state" property="state" jdbcType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="total_price" property="totalPrice" jdbcType="DOUBLE" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+
+    <resultMap id="orderResultMap" type="order" extends="orderResultMap1">
+
+        
+        <collection property="orderDetailList" ofType="orderDetail">
+
+            <id column="t_id" property="id" jdbcType="INTEGER" />
+            <result column="oid" property="oid" jdbcType="VARCHAR" />
+            <result column="gid" property="gid" jdbcType="INTEGER" />
+            <result column="gname" property="gname" jdbcType="VARCHAR" />
+            <result column="gpic" property="gpic" jdbcType="VARCHAR" />
+            <result column="gprice" property="gprice" jdbcType="DOUBLE" />
+            <result column="num" property="num" jdbcType="INTEGER" />
+            <result column="sub_total" property="subTotal" jdbcType="DOUBLE" />
+            <result column="gdesc" property="gdesc" jdbcType="VARCHAR" />
+        </collection>
+
+    </resultMap>
+
+    <select id="getOrderListByUserIdAndTableNum" resultMap="orderResultMap">
+            SELECT
+                o.*,
+                t.*,
+                o.id as o_id,
+	            t.id as t_id
+            FROM
+                t_order${tableNum} o
+            LEFT JOIN t_order_detail${tableNum} t
+             ON (o.id = t.oid AND o.uid = #{userId})
+
+    </select>
+
+    <select id="getOrderById" resultMap="orderResultMap">
+            SELECT
+                o.*,
+                t.*,
+                o.id as o_id,
+	            t.id as t_id
+            FROM
+                t_order${tableNum} o
+            LEFT JOIN t_order_detail${tableNum} t
+             ON (o.id = t.oid ) where o.id = #{oid}
+
+    </select>
+
+
+    <update id="updateOrderState">
+        update t_order${tableNum} set state =#{state} where id = #{oid}
+    </update>
+</mapper>

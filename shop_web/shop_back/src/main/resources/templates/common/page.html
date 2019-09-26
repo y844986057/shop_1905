@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <base th:href="${#request.getContextPath()+'/'}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="pageDivthy">
+
+    <link rel="stylesheet" href="lib/layer/ui/css/layui.css" media="all">
+    <script src="lib/layer/ui/layui.js"></script>
+    <!-- 这个div用来显示分页导航条的 -->
+    <div id="pageDiv"></div>
+    <script>
+        // 初始化分页导航条
+        layui.use('laypage', function() {
+            var laypage = layui.laypage;
+
+            // JS中获取域对象中的值
+            var total = [[${page.total}]];
+            var limit = [[${page.pageSize}]];
+            var pageNum = [[${page.pageNum}]];
+            var url = "[[${url}]]";
+
+            laypage.render({
+                elem : 'pageDiv' // 存放导航条的容器的ID
+                ,count : total // 总条数
+                ,limit : limit
+                ,curr: pageNum // 当前页
+                ,layout : [ 'prev', 'page', 'next', 'limit', 'count' ]
+                ,limits:[5,10,20]
+                ,jump : function(obj, first) { // 切换分页的回调
+                    console.log(obj)
+                    if (!first) {
+                        // 查询切换页面的数据
+                        location.href=url+"?pageNum="+obj.curr+"&pageSize="+obj.limit;
+                    }
+                }
+            });
+
+        });
+    </script>
+</div>
+</body>
+</html>
